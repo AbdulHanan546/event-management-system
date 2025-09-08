@@ -64,7 +64,7 @@ npm run dev
 
 ## Project Structure
 ```
-/src
+/backend
   /config
   /controllers
   /middleware
