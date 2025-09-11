@@ -48,6 +48,24 @@ export const login = async (req, res) => {
   }
 };
 
+// will now return the registered events for user for profile page.
 export const me = async (req, res) => {
-  res.json({ user: req.user });
+  try {
+    const user = await User.findById(req.user._id)
+      .select("-password")                // don’t send the password
+      .populate("registeredEvents", "title date location category price");
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.json({
+      user,
+      registeredEvents: user.registeredEvents, // explicit if you want separate field
+    });
+  } catch (err) {
+    res
+      .status(500)
+      .json({ message: "Failed to fetch profile", error: err.message });
+  }
 };
