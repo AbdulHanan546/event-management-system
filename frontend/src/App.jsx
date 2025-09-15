@@ -8,6 +8,8 @@ import Events from '../Components/Event-listing';
 import EventDetails from '../Components/Event-Details';
 import Contact from '../Components/Contact';
 import Login from '../Components/Login';
+import AdminDashboard from '../AdminDashboard';
+import AdminLogin from '../AdminLogin';
 function App() {
 
   return (
@@ -20,6 +22,8 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/admin/login" element={<AdminLogin />} />
       </Routes>
     </Router>
   )
